@@ -1,0 +1,7 @@
+{
+  "obs_id": "000002A45800",
+  "obs_collection": "SPITZER_SHA",
+  "download_time": "2025-05-10 00:32:55",
+  "download_method": "direct_sha",
+  "download_dir": "p9_data\\mast\\SPITZER_000002A45800"
+}

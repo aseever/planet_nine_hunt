@@ -1,0 +1,106 @@
+{
+  "download_time": "2025-05-10 00:34:01",
+  "total_size_gb": 0.000500003807246685,
+  "size_limit_gb": 100.0,
+  "mast_observations": {
+    "total": 10,
+    "unique_ids": 2
+  },
+  "wise_sources": {
+    "total": 10
+  },
+  "directories": {
+    ".": {
+      "file_count": 1,
+      "total_size_mb": 0.0015153884887695312
+    },
+    "metadata": {
+      "file_count": 3,
+      "total_size_mb": 0.0009746551513671875
+    },
+    "wise\\catalogs": {
+      "file_count": 1,
+      "total_size_mb": 0.000583648681640625
+    },
+    "wise\\images\\J021808.09-493955.5": {
+      "file_count": 1,
+      "total_size_mb": 0.05103778839111328
+    },
+    "wise\\images\\J021809.57-495317.6": {
+      "file_count": 1,
+      "total_size_mb": 0.05104255676269531
+    },
+    "wise\\images\\J021818.44-495631.8": {
+      "file_count": 1,
+      "total_size_mb": 0.05102729797363281
+    },
+    "wise\\images\\J021851.77-494845.8": {
+      "file_count": 1,
+      "total_size_mb": 0.05104541778564453
+    },
+    "wise\\images\\J021908.11-495237.2": {
+      "file_count": 1,
+      "total_size_mb": 0.05105113983154297
+    },
+    "wise\\images\\J021930.82-494148.9": {
+      "file_count": 1,
+      "total_size_mb": 0.05269432067871094
+    },
+    "wise\\images\\J021936.45-495237.7": {
+      "file_count": 1,
+      "total_size_mb": 0.051036834716796875
+    },
+    "wise\\images\\J021943.73-494519.4": {
+      "file_count": 1,
+      "total_size_mb": 0.05102348327636719
+    },
+    "wise\\images\\J021950.83-494714.8": {
+      "file_count": 1,
+      "total_size_mb": 0.051016807556152344
+    },
+    "wise\\images\\J021955.56-494645.3": {
+      "file_count": 1,
+      "total_size_mb": 0.05102825164794922
+    },
+    "wise\\wise\\J021808.09-493955.5": {
+      "file_count": 1,
+      "total_size_mb": 0.033123016357421875
+    },
+    "wise\\wise\\J021809.57-495317.6": {
+      "file_count": 1,
+      "total_size_mb": 0.05104255676269531
+    },
+    "wise\\wise\\J021818.44-495631.8": {
+      "file_count": 1,
+      "total_size_mb": 0.05102729797363281
+    },
+    "wise\\wise\\J021851.77-494845.8": {
+      "file_count": 1,
+      "total_size_mb": 0.05104541778564453
+    },
+    "wise\\wise\\J021908.11-495237.2": {
+      "file_count": 1,
+      "total_size_mb": 0.05105113983154297
+    },
+    "wise\\wise\\J021930.82-494148.9": {
+      "file_count": 1,
+      "total_size_mb": 0.05269432067871094
+    },
+    "wise\\wise\\J021936.45-495237.7": {
+      "file_count": 1,
+      "total_size_mb": 0.03558158874511719
+    },
+    "wise\\wise\\J021943.73-494519.4": {
+      "file_count": 1,
+      "total_size_mb": 0.05102348327636719
+    },
+    "wise\\wise\\J021950.83-494714.8": {
+      "file_count": 1,
+      "total_size_mb": 0.051016807556152344
+    },
+    "wise\\wise\\J021955.56-494645.3": {
+      "file_count": 1,
+      "total_size_mb": 0.03555011749267578
+    }
+  }
+}

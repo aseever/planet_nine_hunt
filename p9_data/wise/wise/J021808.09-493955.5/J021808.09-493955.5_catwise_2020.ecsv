@@ -1,0 +1,1067 @@
+# %ECSV 1.0
+# ---
+# datatype:
+# - name: source_name
+#   datatype: string
+#   description: source hexagesimal designation
+#   meta: !!omap
+#   - {_votable_string_dtype: char}
+#   subtype: json
+# - name: source_id
+#   datatype: string
+#   description: tile name + processing code + wphot index
+#   meta: !!omap
+#   - {_votable_string_dtype: char}
+#   subtype: json
+# - name: ra
+#   unit: deg
+#   datatype: float64
+#   format: '{:.7f}'
+#   description: right ascension (J2000)
+#   meta: !!omap
+#   - {ucd: pos.eq.ra;meta.main}
+#   - {precision: F7}
+# - name: dec
+#   unit: deg
+#   datatype: float64
+#   format: '{:.7f}'
+#   description: declination (J2000)
+#   meta: !!omap
+#   - {ucd: pos.eq.dec;meta.main}
+#   - {precision: F7}
+# - name: sigra
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.4f}'
+#   description: uncertainty in RA
+#   meta: !!omap
+#   - {precision: F4}
+# - name: sigdec
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.4f}'
+#   description: uncertainty in DEC
+#   meta: !!omap
+#   - {precision: F4}
+# - name: sigradec
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.4f}'
+#   description: cross-term of RA and Dec uncertainties
+#   meta: !!omap
+#   - {precision: F4}
+# - name: wx
+#   unit: pix
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: x pixel value
+#   meta: !!omap
+#   - {precision: F3}
+# - name: wy
+#   unit: pix
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: y pixel value
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1sky
+#   unit: '''dn'''
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: frame sky background value, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1sigsk
+#   unit: '''dn'''
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: frame sky background value uncertainty, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1conf
+#   unit: '''dn'''
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: frame sky confusion based on the uncertainty images, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2sky
+#   unit: '''dn'''
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: frame sky background value, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2sigsk
+#   unit: '''dn'''
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: frame sky background value uncertainty, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2conf
+#   unit: '''dn'''
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: frame sky confusion based on the uncertainty images, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1fitr
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.2f}'
+#   description: fitting radius, band 1
+#   meta: !!omap
+#   - {precision: F2}
+# - name: w2fitr
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.2f}'
+#   description: fitting radius, band 2
+#   meta: !!omap
+#   - {precision: F2}
+# - name: w1snr
+#   datatype: float32
+#   format: '{:.1f}'
+#   description: instrumental profile-fit photometry S/N ratio, band 1
+#   meta: !!omap
+#   - {precision: F1}
+# - name: w2snr
+#   datatype: float32
+#   format: '{:.1f}'
+#   description: instrumental profile-fit photometry S/N ratio, band 2
+#   meta: !!omap
+#   - {precision: F1}
+# - name: w1flux
+#   unit: '''dn'''
+#   datatype: float32
+#   format: '{:.4g}'
+#   description: profile-fit photometry raw flux, band 1
+#   meta: !!omap
+#   - {precision: E4}
+# - name: w1sigflux
+#   unit: '''dn'''
+#   datatype: float32
+#   format: '{:.4g}'
+#   description: profile-fit photometry raw flux uncertainty, band 2
+#   meta: !!omap
+#   - {precision: E4}
+# - name: w2flux
+#   unit: '''dn'''
+#   datatype: float32
+#   format: '{:.4g}'
+#   description: profile-fit photometry raw flux, band 2
+#   meta: !!omap
+#   - {precision: E4}
+# - name: w2sigflux
+#   unit: '''dn'''
+#   datatype: float32
+#   format: '{:.4g}'
+#   description: profile-fit photometry raw flux uncertainty, band 2
+#   meta: !!omap
+#   - {precision: E4}
+# - name: w1mpro
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: instrumental profile-fit photometry magnitude, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1sigmpro
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: instrumental profile-fit photometry flux uncertainty in mag units, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1rchi2
+#   datatype: float32
+#   format: '{:.3g}'
+#   description: instrumental profile-fit photometry reduced chi^2, band 1
+#   meta: !!omap
+#   - {precision: E3}
+# - name: w2mpro
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: instrumental profile-fit photometry magnitude, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2sigmpro
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: instrumental profile-fit photometry flux uncertainty in mag units, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2rchi2
+#   datatype: float32
+#   format: '{:.3g}'
+#   description: instrumental profile-fit photometry reduced chi^2, band 2
+#   meta: !!omap
+#   - {precision: E3}
+# - name: rchi2
+#   datatype: float32
+#   format: '{:.3g}'
+#   description: instrumental profile-fit photometry reduced chi squared, total
+#   meta: !!omap
+#   - {precision: E3}
+# - {name: nb, datatype: int64, description: number of blend components used in each fit}
+# - {name: na, datatype: int64, description: number of actively deblended components}
+# - name: w1sat
+#   datatype: float32
+#   format: '{:.5f}'
+#   description: fraction of pixels affected by saturation, band 1
+#   meta: !!omap
+#   - {precision: F5}
+# - name: w2sat
+#   datatype: float32
+#   format: '{:.5f}'
+#   description: fraction of pixels affected by saturation, band 2
+#   meta: !!omap
+#   - {precision: F5}
+# - name: w1mag
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: instrumental standard aperture mag w/ aperture correction applied, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1sigm
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: instrumental standard aperture mag uncertainty, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - {name: w1flg, datatype: int64, description: 'instrumental standard aperture flag, band 1'}
+# - name: w1cov
+#   datatype: float32
+#   format: '{:.2f}'
+#   description: mean coverage depth, band 1
+#   meta: !!omap
+#   - {precision: F2}
+# - name: w2mag
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: instrumental standard aperture mag w/ aperture correction applied, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2sigm
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: instrumental standard aperture mag uncertainty, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - {name: w2flg, datatype: int64, description: 'instrumental standard aperture flag, band 2'}
+# - name: w2cov
+#   datatype: float32
+#   format: '{:.2f}'
+#   description: mean coverage depth, band 2
+#   meta: !!omap
+#   - {precision: F2}
+# - name: w1mag_1
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 1 instrumental aperture mag, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1sigm_1
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 1 instrumental aperture mag uncertainty, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - {name: w1flg_1, datatype: int64, description: 'aperture 1 instrumental aperture flag, band 1'}
+# - name: w2mag_1
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 1 instrumental aperture mag, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2sigm_1
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 1 instrumental aperture mag uncertainty, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - {name: w2flg_1, datatype: int64, description: 'aperture 1 instrumental aperture flag, band 2'}
+# - name: w1mag_2
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 2 instrumental aperture mag, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1sigm_2
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 2 instrumental aperture mag uncertainty, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - {name: w1flg_2, datatype: int64, description: 'aperture 2 instrumental aperture flag, band 1'}
+# - name: w2mag_2
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 2 instrumental aperture mag, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2sigm_2
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 2 instrumental aperture mag uncertainty, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - {name: w2flg_2, datatype: int64, description: 'aperture 2 instrumental aperture flag, band 2'}
+# - name: w1mag_3
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 3 instrumental aperture mag, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1sigm_3
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 3 instrumental aperture mag uncertainty, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - {name: w1flg_3, datatype: int64, description: 'aperture 3 instrumental aperture flag, band 1'}
+# - name: w2mag_3
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 3 instrumental aperture mag, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2sigm_3
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 3 instrumental aperture mag uncertainty, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - {name: w2flg_3, datatype: int64, description: 'aperture 3 instrumental aperture flag, band 2'}
+# - name: w1mag_4
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 4 instrumental aperture mag, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1sigm_4
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 4 instrumental aperture mag uncertainty, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - {name: w1flg_4, datatype: int64, description: 'aperture 4 instrumental aperture flag, band 1'}
+# - name: w2mag_4
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 4 instrumental aperture mag, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2sigm_4
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 4 instrumental aperture mag uncertainty, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - {name: w2flg_4, datatype: int64, description: 'aperture 4 instrumental aperture flag, band 2'}
+# - name: w1mag_5
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 5 instrumental aperture mag, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1sigm_5
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 5 instrumental aperture mag uncertainty, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - {name: w1flg_5, datatype: int64, description: 'aperture 5 instrumental aperture flag, band 1'}
+# - name: w2mag_5
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 5 instrumental aperture mag, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2sigm_5
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 5 instrumental aperture mag uncertainty, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - {name: w2flg_5, datatype: int64, description: 'aperture 5 instrumental aperture flag, band 2'}
+# - name: w1mag_6
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 6 instrumental aperture mag, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1sigm_6
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 6 instrumental aperture mag uncertainty, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - {name: w1flg_6, datatype: int64, description: 'aperture 6 instrumental aperture flag, band 1'}
+# - name: w2mag_6
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 6 instrumental aperture mag, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2sigm_6
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 6 instrumental aperture mag uncertainty, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - {name: w2flg_6, datatype: int64, description: 'aperture 6 instrumental aperture flag, band 2'}
+# - name: w1mag_7
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 7 instrumental aperture mag, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1sigm_7
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 7 instrumental aperture mag uncertainty, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - {name: w1flg_7, datatype: int64, description: 'aperture 7 instrumental aperture flag, band 1'}
+# - name: w2mag_7
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 7 instrumental aperture mag, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2sigm_7
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 7 instrumental aperture mag uncertainty, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - {name: w2flg_7, datatype: int64, description: 'aperture 7 instrumental aperture flag, band 2'}
+# - name: w1mag_8
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 8 instrumental aperture mag, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1sigm_8
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 8 instrumental aperture mag uncertainty, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - {name: w1flg_8, datatype: int64, description: 'aperture 8 instrumental aperture flag, band 1'}
+# - name: w2mag_8
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 8 instrumental aperture mag, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2sigm_8
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: aperture 8 instrumental aperture mag uncertainty, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - {name: w2flg_8, datatype: int64, description: 'aperture 8 instrumental aperture flag, band 2'}
+# - {name: w1nm, datatype: int64, description: 'number of profile-fit flux measurements for source with SNR &gt;= 3, band 1'}
+# - {name: w1m, datatype: int64, description: 'number of profile-fit flux measurements for source, band 1'}
+# - name: w1magp
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: profile-fit repeatability mag -- inverse-variance weighted mean mag, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1sigp1
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: standard deviation of population of profile-fit repeatability mag, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1sigp2
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: standard deviation of the mean of profile-fit repeatability mag, band 1
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1k
+#   datatype: float32
+#   format: '{:.5f}'
+#   description: Stetson K variability index, band 1
+#   meta: !!omap
+#   - {precision: F5}
+# - {name: w1ndf, datatype: int64, description: 'number degrees of freedom in variability chi^2, band 1'}
+# - name: w1mlq
+#   datatype: float32
+#   format: '{:.2f}'
+#   description: -ln(Q), where Q = 1 - P(chi^2), band 1
+#   meta: !!omap
+#   - {precision: F2}
+# - name: w1mjdmin
+#   unit: d
+#   datatype: float64
+#   format: '{:.8f}'
+#   description: minimum modified Julian Date of frame extractions, band 1
+#   meta: !!omap
+#   - {precision: F8}
+# - name: w1mjdmax
+#   unit: d
+#   datatype: float64
+#   format: '{:.8f}'
+#   description: maximum modified Julian Date of frame extractions, band 1
+#   meta: !!omap
+#   - {precision: F8}
+# - name: w1mjdmean
+#   unit: d
+#   datatype: float64
+#   format: '{:.8f}'
+#   description: mean modified Julian Date of frame extractions, band 1
+#   meta: !!omap
+#   - {precision: F8}
+# - {name: w2nm, datatype: int64, description: 'number of profile-fit flux measurements for source with SNR &gt;= 3, band 2'}
+# - {name: w2m, datatype: int64, description: 'number of profile-fit flux measurements for source, band 2'}
+# - name: w2magp
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: profile-fit repeatability mag -- inverse-variance weighted mean mag, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2sigp1
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: standard deviation of population of profile-fit repeatability mag, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2sigp2
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: standard deviation of the mean of profile-fit repeatability mag, band 2
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2k
+#   datatype: float32
+#   format: '{:.5f}'
+#   description: Stetson K variability index, band 2
+#   meta: !!omap
+#   - {precision: F5}
+# - {name: w2ndf, datatype: int64, description: 'number degrees of freedom in variability chi^2, band 2'}
+# - name: w2mlq
+#   datatype: float32
+#   format: '{:.2f}'
+#   description: -ln(Q), where Q = 1 - P(chi^2), band 2
+#   meta: !!omap
+#   - {precision: F2}
+# - name: w2mjdmin
+#   unit: d
+#   datatype: float64
+#   format: '{:.8f}'
+#   description: minimum modified Julian Date of frame extractions, band 2
+#   meta: !!omap
+#   - {precision: F8}
+# - name: w2mjdmax
+#   unit: d
+#   datatype: float64
+#   format: '{:.8f}'
+#   description: maximum modified Julian Date of frame extractions, band 2
+#   meta: !!omap
+#   - {precision: F8}
+# - name: w2mjdmean
+#   unit: d
+#   datatype: float64
+#   format: '{:.8f}'
+#   description: mean modified Julian Date of frame extractions, band 2
+#   meta: !!omap
+#   - {precision: F8}
+# - {name: rho12, datatype: int64, description: band 1 - band 2 correlation coefficient}
+# - {name: q12, datatype: int64, description: '-log10(1 - P(rho12)), given no real correlation'}
+# - {name: niters, datatype: int64, description: number of chi-square minimization iterations}
+# - {name: nsteps, datatype: int64, description: number of steps in all iterations}
+# - {name: mdetid, datatype: int64, description: source ID in mdet list}
+# - name: p1
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.5f}'
+#   description: vector from the mdet position to the wphot template-fit position, component 1
+#   meta: !!omap
+#   - {precision: F5}
+# - name: p2
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.5f}'
+#   description: vector from the mdet position to the wphot template-fit position, component 2
+#   meta: !!omap
+#   - {precision: F5}
+# - name: meanobsmjd
+#   unit: d
+#   datatype: float64
+#   format: '{:.6f}'
+#   description: mean observation epoch
+#   meta: !!omap
+#   - {precision: F6}
+# - name: ra_pm
+#   unit: deg
+#   datatype: float64
+#   format: '{:.7f}'
+#   description: Right ascension at epoch MJD=57170 (2015.405) from psf model incl. motion
+#   meta: !!omap
+#   - {precision: F7}
+# - name: dec_pm
+#   unit: deg
+#   datatype: float64
+#   format: '{:.7f}'
+#   description: Declination at epoch MJD=57170 (2015.405) from psf model incl. motion
+#   meta: !!omap
+#   - {precision: F7}
+# - name: sigra_pm
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.4f}'
+#   description: One-sigma uncertainty in RA from psf model incl. motion
+#   meta: !!omap
+#   - {precision: F4}
+# - name: sigdec_pm
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.4f}'
+#   description: One-sigma uncertainty in DEC  from psf model incl. motion
+#   meta: !!omap
+#   - {precision: F4}
+# - name: sigradec_pm
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.4f}'
+#   description: The co-sigma of the equatorial position uncertainties from psf model incl motion
+#   meta: !!omap
+#   - {precision: F4}
+# - name: pmra
+#   unit: arcsec / yr
+#   datatype: float32
+#   format: '{:.5f}'
+#   description: Apparent motion in RA
+#   meta: !!omap
+#   - {precision: F5}
+# - name: pmdec
+#   unit: arcsec / yr
+#   datatype: float32
+#   format: '{:.5f}'
+#   description: Apparent motion in Dec
+#   meta: !!omap
+#   - {precision: F5}
+# - name: sigpmra
+#   unit: arcsec / yr
+#   datatype: float32
+#   format: '{:.4f}'
+#   description: Uncertainty in the RA motion estimate
+#   meta: !!omap
+#   - {precision: F4}
+# - name: sigpmdec
+#   unit: arcsec / yr
+#   datatype: float32
+#   format: '{:.4f}'
+#   description: Uncertainty in the Dec motion estimate
+#   meta: !!omap
+#   - {precision: F4}
+# - name: w1snr_pm
+#   datatype: float32
+#   format: '{:.1f}'
+#   description: S/N ratio of the W1 profile-fit photometry including motion
+#   meta: !!omap
+#   - {precision: F1}
+# - name: w2snr_pm
+#   datatype: float32
+#   format: '{:.1f}'
+#   description: S/N ratio of the W2 profile-fit photometry including motion
+#   meta: !!omap
+#   - {precision: F1}
+# - name: w1flux_pm
+#   unit: '''dn'''
+#   datatype: float32
+#   format: '{:.4g}'
+#   description: Raw flux W1 profile-fit photometry including motion
+#   meta: !!omap
+#   - {precision: E4}
+# - name: w1sigflux_pm
+#   unit: '''dn'''
+#   datatype: float32
+#   format: '{:.4g}'
+#   description: Raw flux uncertainty W1 profile-fit photometry including motion
+#   meta: !!omap
+#   - {precision: E4}
+# - name: w2flux_pm
+#   unit: '''dn'''
+#   datatype: float32
+#   format: '{:.4g}'
+#   description: Raw flux W2 profile-fit photometry including motion
+#   meta: !!omap
+#   - {precision: E4}
+# - name: w2sigflux_pm
+#   unit: '''dn'''
+#   datatype: float32
+#   format: '{:.4g}'
+#   description: Raw flux uncertainty W2 profile-fit photometry including motion
+#   meta: !!omap
+#   - {precision: E4}
+# - name: w1mpro_pm
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: W1 magnitude from profile-fit photometry including motion
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1sigmpro_pm
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: W1 flux uncertainty in mag units from  profile-fit photometry including motion
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w1rchi2_pm
+#   datatype: float32
+#   format: '{:.3g}'
+#   description: Reduced chi^2 of the W1 profile-fit photometry measurement including motion est
+#   meta: !!omap
+#   - {precision: E3}
+# - name: w2mpro_pm
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: W2 magnitude from profile-fit photometry including motion
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2sigmpro_pm
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: W2 flux uncertainty in mag units from  profile-fit photometry including motion
+#   meta: !!omap
+#   - {precision: F3}
+# - name: w2rchi2_pm
+#   datatype: float32
+#   format: '{:.3g}'
+#   description: Reduced chi^2 of the W2 profile-fit photometry measurement including motion est
+#   meta: !!omap
+#   - {precision: E3}
+# - name: rchi2_pm
+#   datatype: float32
+#   format: '{:.3g}'
+#   description: Combined Reduced chi^2 in all bands for the psf photometry includes src motion
+#   meta: !!omap
+#   - {precision: E3}
+# - name: pmcode
+#   datatype: string
+#   description: Motion estimate quality code
+#   meta: !!omap
+#   - {_votable_string_dtype: char}
+#   subtype: json
+# - {name: niters_pm, datatype: int64, description: number of chi-square minimization iterations}
+# - {name: nsteps_pm, datatype: int64, description: number of steps in all iterations}
+# - name: dist_ad
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: radial distance between source positions in ascending and descending scans
+#   meta: !!omap
+#   - {precision: F3}
+# - name: dw1mag
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: difference in w1mpro between ascending and descending scans
+#   meta: !!omap
+#   - {precision: F3}
+# - name: rch2w1
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: chi-square for dw1mag (1 degree of freedom)
+#   meta: !!omap
+#   - {precision: F3}
+# - name: dw2mag
+#   unit: mag
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: difference in w2mpro between ascending and descending scans
+#   meta: !!omap
+#   - {precision: F3}
+# - name: rch2w2
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: chi-square for dw2mag (1 degree of freedom)
+#   meta: !!omap
+#   - {precision: F3}
+# - name: elon_avg
+#   unit: deg
+#   datatype: float64
+#   format: '{:.6f}'
+#   description: average ecliptic longitude
+#   meta: !!omap
+#   - {precision: F6}
+# - name: elonsig
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: uncertainty in elon_avg
+#   meta: !!omap
+#   - {precision: F3}
+# - name: elat_avg
+#   unit: deg
+#   datatype: float64
+#   format: '{:.6f}'
+#   description: average ecliptic latitude
+#   meta: !!omap
+#   - {precision: F6}
+# - name: elatsig
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: uncertainty in elat_avg
+#   meta: !!omap
+#   - {precision: F3}
+# - name: delon
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: descending scan - ascending scan ecliptic longitude difference
+#   meta: !!omap
+#   - {precision: F3}
+# - name: delonsig
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: one-sigma uncertainty in Delon
+#   meta: !!omap
+#   - {precision: F3}
+# - name: delat
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: descending scan - ascending scan ecliptic longitude difference
+#   meta: !!omap
+#   - {precision: F3}
+# - name: delatsig
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: one-sigma uncertainty in Delat
+#   meta: !!omap
+#   - {precision: F3}
+# - name: delonsnr
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: abs(Delon)/DelonSig
+#   meta: !!omap
+#   - {precision: F3}
+# - name: delatsnr
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: abs(Delat)/DelatSig
+#   meta: !!omap
+#   - {precision: F3}
+# - name: chi2pmra
+#   datatype: float32
+#   format: '{:.3g}'
+#   description: chi-square for PMRA difference (1 degree of freedom)
+#   meta: !!omap
+#   - {precision: E3}
+# - name: chi2pmdec
+#   datatype: float32
+#   format: '{:.3g}'
+#   description: chi-square for PMDec difference (1 degree of freedom)
+#   meta: !!omap
+#   - {precision: E3}
+# - {name: ka, datatype: int64, description: astrometry usage code}
+# - {name: k1, datatype: int64, description: W1 photometry usage code}
+# - {name: k2, datatype: int64, description: W2 photometry usage code}
+# - {name: km, datatype: int64, description: proper motion usage code}
+# - name: par_pm
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: parallax from PM desc-asce elon
+#   meta: !!omap
+#   - {precision: F3}
+# - name: par_pmsig
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: one-sigma uncertainty in par_pm
+#   meta: !!omap
+#   - {precision: F3}
+# - name: par_stat
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: parallax estimate from stationary solution
+#   meta: !!omap
+#   - {precision: F3}
+# - name: par_sigma
+#   unit: arcsec
+#   datatype: float32
+#   format: '{:.3f}'
+#   description: one-sigma uncertainty in par_stat
+#   meta: !!omap
+#   - {precision: F3}
+# - name: dist_cc
+#   unit: arcsec
+#   datatype: float64
+#   format: '{:.3f}'
+#   description: distance between CatWISE and AllWISE source
+#   meta: !!omap
+#   - {precision: F3}
+# - name: cc_flags
+#   datatype: string
+#   description: worst case 4 character cc_flag from AllWISE
+#   meta: !!omap
+#   - {_votable_string_dtype: char}
+#   subtype: json
+# - {name: w1cc_map, datatype: int64, description: worst case w1cc_map from AllWISE}
+# - name: w1cc_map_str
+#   datatype: string
+#   description: worst case w1cc_map_str from AllWISE
+#   meta: !!omap
+#   - {_votable_string_dtype: char}
+#   subtype: json
+# - {name: w2cc_map, datatype: int64, description: worst case w2cc_map from AllWISE}
+# - name: w2cc_map_str
+#   datatype: string
+#   description: worst case w2cc_map_str from AllWISE
+#   meta: !!omap
+#   - {_votable_string_dtype: char}
+#   subtype: json
+# - {name: n_aw, datatype: int64, description: number of sources within 2.75" in AllWISE}
+# - name: ab_flags
+#   datatype: string
+#   description: unWISE artifact bitmask contamination flags
+#   meta: !!omap
+#   - {_votable_string_dtype: char}
+#   subtype: json
+# - {name: w1ab_map, datatype: int64, description: unWISE artifact bitmask contamination map for W1}
+# - name: w1ab_map_str
+#   datatype: string
+#   description: unWISE artifact bitmask contamination string for W1
+#   meta: !!omap
+#   - {_votable_string_dtype: char}
+#   subtype: json
+# - {name: w2ab_map, datatype: int64, description: unWISE artifact bitmask contamination map for W2}
+# - name: w2ab_map_str
+#   datatype: string
+#   description: unWISE artifact bitmask contamination string for W2
+#   meta: !!omap
+#   - {_votable_string_dtype: char}
+#   subtype: json
+# - name: glon
+#   unit: deg
+#   datatype: float64
+#   format: '{:.6f}'
+#   description: Galactic longitude
+#   meta: !!omap
+#   - {precision: F6}
+# - name: glat
+#   unit: deg
+#   datatype: float64
+#   format: '{:.6f}'
+#   description: Galactic latitude
+#   meta: !!omap
+#   - {precision: F6}
+# - name: elon
+#   unit: deg
+#   datatype: float64
+#   format: '{:.6f}'
+#   description: Ecliptic longitude
+#   meta: !!omap
+#   - {precision: F6}
+# - name: elat
+#   unit: deg
+#   datatype: float64
+#   format: '{:.6f}'
+#   description: Ecliptic latitude
+#   meta: !!omap
+#   - {precision: F6}
+# - name: unwise_objid
+#   datatype: string
+#   description: UnWISE Object ID
+#   meta: !!omap
+#   - {_votable_string_dtype: char}
+#   subtype: json
+# - name: cntr
+#   datatype: int64
+#   description: unique entry counter (key) number
+#   meta: !!omap
+#   - {ucd: meta.record;meta.main}
+#   - {utype: meta.record;meta.main}
+# - name: x
+#   datatype: float64
+#   format: '{:.16f}'
+#   description: unit sphere (x,y,z) position x value
+#   meta: !!omap
+#   - {ucd: pos.cartesian.x}
+#   - {precision: F16}
+#   - {utype: pos.cartesian.x}
+# - name: y
+#   datatype: float64
+#   format: '{:.16f}'
+#   description: unit sphere (x,y,z) position y value
+#   meta: !!omap
+#   - {ucd: pos.cartesian.y}
+#   - {precision: F16}
+#   - {utype: pos.cartesian.y}
+# - name: z
+#   datatype: float64
+#   format: '{:.16f}'
+#   description: unit sphere (x,y,z) position z value
+#   meta: !!omap
+#   - {ucd: pos.cartesian.z}
+#   - {precision: F16}
+#   - {utype: pos.cartesian.z}
+# - name: htm20
+#   datatype: int64
+#   description: Level 20 HTM  spatial index key
+#   meta: !!omap
+#   - {ucd: pos.HTM}
+#   - {utype: pos.HTM}
+# schema: astropy-2.0
+source_name source_id ra dec sigra sigdec sigradec wx wy w1sky w1sigsk w1conf w2sky w2sigsk w2conf w1fitr w2fitr w1snr w2snr w1flux w1sigflux w2flux w2sigflux w1mpro w1sigmpro w1rchi2 w2mpro w2sigmpro w2rchi2 rchi2 nb na w1sat w2sat w1mag w1sigm w1flg w1cov w2mag w2sigm w2flg w2cov w1mag_1 w1sigm_1 w1flg_1 w2mag_1 w2sigm_1 w2flg_1 w1mag_2 w1sigm_2 w1flg_2 w2mag_2 w2sigm_2 w2flg_2 w1mag_3 w1sigm_3 w1flg_3 w2mag_3 w2sigm_3 w2flg_3 w1mag_4 w1sigm_4 w1flg_4 w2mag_4 w2sigm_4 w2flg_4 w1mag_5 w1sigm_5 w1flg_5 w2mag_5 w2sigm_5 w2flg_5 w1mag_6 w1sigm_6 w1flg_6 w2mag_6 w2sigm_6 w2flg_6 w1mag_7 w1sigm_7 w1flg_7 w2mag_7 w2sigm_7 w2flg_7 w1mag_8 w1sigm_8 w1flg_8 w2mag_8 w2sigm_8 w2flg_8 w1nm w1m w1magp w1sigp1 w1sigp2 w1k w1ndf w1mlq w1mjdmin w1mjdmax w1mjdmean w2nm w2m w2magp w2sigp1 w2sigp2 w2k w2ndf w2mlq w2mjdmin w2mjdmax w2mjdmean rho12 q12 niters nsteps mdetid p1 p2 meanobsmjd ra_pm dec_pm sigra_pm sigdec_pm sigradec_pm pmra pmdec sigpmra sigpmdec w1snr_pm w2snr_pm w1flux_pm w1sigflux_pm w2flux_pm w2sigflux_pm w1mpro_pm w1sigmpro_pm w1rchi2_pm w2mpro_pm w2sigmpro_pm w2rchi2_pm rchi2_pm pmcode niters_pm nsteps_pm dist_ad dw1mag rch2w1 dw2mag rch2w2 elon_avg elonsig elat_avg elatsig delon delonsig delat delatsig delonsnr delatsnr chi2pmra chi2pmdec ka k1 k2 km par_pm par_pmsig par_stat par_sigma dist_cc cc_flags w1cc_map w1cc_map_str w2cc_map w2cc_map_str n_aw ab_flags w1ab_map w1ab_map_str w2ab_map w2ab_map_str glon glat elon elat unwise_objid cntr x y z htm20
+"""J021808.11-493955.0""" """0348m500_b0-053747""" 34.5338252 -49.6652839 0.3013 0.2709 -0.0956 1282.692 1431.609 0.205 4.082 0.0 0.513 13.115 0.837 7.5 7.5 12.5 1.8 64.522 5.1653 33.402 18.318 17.976 0.087 0.7274 17.93 "" 0.8955 0.803 1 0 0.0 0.0 17.516 0.099 1 257.4 17.668 "" 32 255.2 18.165 0.12 1 18.197 "" 32 17.661 0.099 1 17.845 "" 32 17.113 0.076 1 17.335 "" 32 16.645 0.06 1 17.663 0.476 1 16.21 0.048 1 16.696 0.233 1 15.531 0.031 1 15.465 0.088 1 14.785 0.019 1 14.528 0.043 1 14.286 0.014 1 13.973 0.029 1 8 13 17.997 0.516 0.203 0.92636 11 6.95 55375.24350967 58455.78822059 57233.65918478 0 13 18.044 0.977 0.369 0.71085 6 0.63 55375.24350967 58455.78822059 57233.6732216 -40 0 3 20 54829 -0.12379 0.07647 56993.22841 34.5337668 -49.6652793 0.3144 0.2863 -0.081 0.26918 -0.00131 0.1166 0.1077 12.8 1.5 66.048 5.1742 26.532 18.259 17.95 0.085 0.6937 18.001 "" 0.8952 0.7893 """1N000""" 3 18 0.669 -0.171 0.842 0.457 0.589 3.587433 0.275 -57.707107 0.298 -0.413 0.585 -0.558 0.66 0.707 0.846 4.464 0.3141 3 3 3 3 -0.226 0.346 -0.31 0.346 0.601356 """0000""" 0 """""" 0 """""" 1 """00""" 0 """""" 0 """""" 272.327937 -61.994727 3.5874289 -57.7071084 """0348m500o0052519r02""" 1000151171542 0.5332006100051262 0.3669222838258798 -0.7622762931655175 9791566802785
