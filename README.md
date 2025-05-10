@@ -8,3 +8,5 @@ Key aspects of our search strategy include:
 Examining archival data: We'll use astroquery to search MAST and IRSA archives for any observations covering our target area, focusing on infrared data that could detect an object with a temperature of 30-50K.
 Implementing shift-and-stack analysis: For any multi-epoch data available in the region, we'll use the shift-and-stack method to enhance the detection of a faint moving object using our calculated motion rate.
 Spectral verification: We'll look for spectral characteristics consistent with a cold planet, with peak emission around 70-100 micrometers.
+
+This is a toy for now - it's unlikey in the sources we have access to that we'll see anything due to the dimmness of reflected sunlight off a 700 AU object, but future surveys can be pretty easily added to this tool and processed (Dark Energy Camera on the Blanco 4-meter telescope!?) and get a lot more serious.
