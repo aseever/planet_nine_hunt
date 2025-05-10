@@ -28,6 +28,7 @@ from p9_data_core import load_config, load_trajectory
 
 # Import repository handlers
 from repository_modules.p9_mast_finder import MASTHandler
+from repository_modules.p9_irsa_finder import IRSAHandler
 
 # Configure logging
 logging.basicConfig(
@@ -74,7 +75,7 @@ def main():
         
         # Determine repositories to search
         if args.repos == "all":
-            repositories = ["mast"]  # Currently only MAST is implemented
+            repositories = ["mast", "irsa"]  # Add new repositories here
         else:
             repositories = args.repos.split(",")
         
@@ -108,6 +109,9 @@ def main():
         for repo in repositories:
             if repo.lower() == "mast":
                 handler = MASTHandler(config, trajectory_data, tight_search)
+                logger.info(f"Initialized {handler.name} handler")
+            elif repo.lower() == "irsa":
+                handler = IRSAHandler(config, trajectory_data, tight_search)
                 logger.info(f"Initialized {handler.name} handler")
             else:
                 logger.warning(f"Repository {repo} not supported yet")

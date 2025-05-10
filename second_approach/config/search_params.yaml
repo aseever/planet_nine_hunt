@@ -32,13 +32,6 @@ repositories:
     priority_wavelengths: [70, 160] # Far-IR is highest priority
 
   irsa:
-    priority_instruments: ['WISE', 'Herschel', 'AKARI']
-    priority_wavelengths: [70, 160] # Far-IR is highest priority
-
-  herschel:
-    priority_instruments: ['PACS', 'SPIRE']
-    priority_wavelengths: [70, 160, 250, 350, 500] # All far-IR bands
-
-  planck:
-    priority_instruments: ['HFI']
-    priority_wavelengths: [350, 550] # 857 GHz and 545 GHz channels
+    priority_catalogs: ['wise', 'akari', 'herschel']
+    min_wavelength: 12 # Minimum wavelength to consider (µm)
+    priority_bands: ['W4', 'W3', 'WIDE-S', 'WIDE-L'] # Prioritize these bands
