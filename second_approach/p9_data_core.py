@@ -118,16 +118,28 @@ class RepositoryHandler:
         if 'wavelength' in criteria:
             wavelength_range = wavelength_ranges.get(criteria['wavelength'])
             if wavelength_range and 'wavelength' in result:
+                # Handle None values in wavelength
+                if result['wavelength'] is None:
+                    return False
+                
                 if not (wavelength_range[0] <= result['wavelength'] <= wavelength_range[1]):
                     return False
         
         # Check year criteria
         if 'year_min' in criteria and 'obs_year' in result:
+            # Handle None values in observation year
+            if result['obs_year'] is None:
+                return False
+                
             if result['obs_year'] < criteria['year_min']:
                 return False
                 
         # Check position match criteria
         if 'position_match' in criteria and 'separation_deg' in result:
+            # Handle None values in separation
+            if result['separation_deg'] is None:
+                return False
+                
             if criteria['position_match'] == 'exact' and result['separation_deg'] > 0.05:
                 return False
             elif criteria['position_match'] == 'within_tight' and result['separation_deg'] > self.config['search_radii']['tight']:

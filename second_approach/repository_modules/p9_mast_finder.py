@@ -46,24 +46,51 @@ class MASTHandler(RepositoryHandler):
                     "IRAC": [3.6, 4.5, 5.8, 8.0],
                     "MIPS": [24.0, 70.0, 160.0]
                 },
-                "years": [2003, 2020]
+                "years": [2003, 2020],
+                "relevant": True,  # Relevant for Planet Nine
+                "ir_capable": True  # Has far-IR capabilities
             },
             "HST": {
                 "wavelengths": {
                     "WFC3": [0.9, 1.7],  # Near-IR only, approximated
                     "NICMOS": [0.8, 2.5]
                 },
-                "years": [1990, 2023]
+                "years": [1990, 2023],
+                "relevant": False,  # Not ideal for Planet Nine
+                "ir_capable": False  # Only near-IR, not far-IR
             },
             "JWST": {
                 "wavelengths": {
                     "MIRI": [5.0, 28.0],
                     "NIRCam": [0.6, 5.0]
                 },
-                "years": [2022, 2025]
+                "years": [2022, 2025],
+                "relevant": True,  # Mid-IR is somewhat relevant
+                "ir_capable": True  # Has mid-IR capabilities
             },
+            "TESS": {
+                "wavelengths": {
+                    "Photometer": [0.6, 1.0]
+                },
+                "years": [2018, 2025],
+                "relevant": False,  # Optical only, not relevant
+                "ir_capable": False  # No IR capabilities
+            },
+            "GALEX": {
+                "wavelengths": {
+                    "FUV": [0.15, 0.28],
+                    "NUV": [0.175, 0.28]
+                },
+                "years": [2003, 2013],
+                "relevant": False,  # UV only, not relevant
+                "ir_capable": False  # No IR capabilities
+            }
             # Other MAST instruments can be added as needed
         }
+        
+        # Define relevant wavelength range
+        self.min_relevant_wavelength = config.get('wavelength_ranges', {}).get('acceptable', [20, 500])[0]
+        self.max_separation = min(0.5, self.search_radius * 1.5)  # Strict separation limit
         
         # Set up astroquery MAST interface
         self.mast = Observations
@@ -80,9 +107,18 @@ class MASTHandler(RepositoryHandler):
             list: Search results
         """
         logger.info(f"Searching MAST with radius {self.search_radius} degrees")
+        logger.info(f"Using strict filters: max separation {self.max_separation}°, min wavelength {self.min_relevant_wavelength}μm")
         
         # Clear previous results
         self.results = []
+        
+        # Filter instruments for IR-capable ones if not specified
+        if not specific_instruments:
+            ir_instruments = [inst for inst, data in self.instruments.items() 
+                            if data.get('ir_capable', False) or data.get('relevant', False)]
+            if ir_instruments:
+                specific_instruments = ir_instruments
+                logger.info(f"Filtering for IR-capable instruments: {specific_instruments}")
         
         # Determine years to search
         if specific_years:
@@ -133,7 +169,7 @@ class MASTHandler(RepositoryHandler):
             except Exception as e:
                 logger.error(f"Error searching MAST for year {year}: {e}")
         
-        logger.info(f"MAST search complete. Found {len(self.results)} results.")
+        logger.info(f"MAST search complete. Found {len(self.results)} relevant results.")
         return self.results
     
     def _process_observation(self, obs, search_year, search_ra, search_dec):
@@ -267,19 +303,27 @@ class MASTHandler(RepositoryHandler):
                     # Only one wavelength for this instrument
                     return wavelengths[0]
         
-        # If we don't know the wavelength, use a default based on collection
+        # If we don't know the wavelength, make a best guess based on collection
         if collection == 'SPITZER_SHA':
+            # If we reach here, we don't know the specific instrument
+            # Let's make a reasonable guess based on relevance to Planet Nine
+            logger.debug(f"Unknown Spitzer instrument, guessing MIPS (70µm)")
             return 70.0  # Guess MIPS as it's more relevant for Planet Nine
         elif collection == 'JWST':
+            logger.debug(f"Unknown JWST instrument, guessing MIRI (20µm)")
             return 20.0  # Guess MIRI
         elif collection == 'HST':
+            logger.debug(f"Unknown HST instrument, guessing near-IR (1.6µm)")
             return 1.6   # Guess near-IR
         elif collection == 'GALEX':
+            logger.debug(f"GALEX observation, using UV (0.2µm)")
             return 0.2   # Ultraviolet
         elif collection == 'TESS':
+            logger.debug(f"TESS observation, using optical (0.7µm)")
             return 0.7   # Optical
         
-        # Default unknown
+        # Default unknown - explicitly return None
+        logger.debug(f"Unknown wavelength for collection {collection}")
         return None
     
     def download(self, download_dir, filter_quality=None):
