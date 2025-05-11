@@ -1,4 +1,4 @@
-You can just do things.
+Update - pausing this one because hubble and jwst haven't looked at the secret location and the old european fits file apis are giving me fits. This script will become useful again when telescopes look at the spot RA: 34.72369°, Dec: -49.79259°
 
 Based on the research by Terry Long Phan's team, we've analyzed the reported Planet Nine candidate detection and developed a search strategy to locate it in current data.
 The object was initially detected in IRAS data from 1983 at RA: 35.74075°, Dec: -48.5125°, and then appeared in AKARI data from 2006 at RA: 35.18379°, Dec: -49.2135°. This represents an angular motion of approximately 2.06 arcminutes per year, consistent with an object at 500-700 AU.
