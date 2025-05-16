@@ -1,3 +1,8 @@
+The idea:
+
+![image](https://github.com/aseever/planet_nine_hunt/blob/main/p9_trajectory.png)
+
+
 Update - pausing this one because hubble and jwst haven't looked at the secret location and the old european fits file apis are giving me fits. This script will become useful again when telescopes look at the spot RA: 34.72369°, Dec: -49.79259°
 
 Based on the research by Terry Long Phan's team, we've analyzed the reported Planet Nine candidate detection and developed a search strategy to locate it in current data.
